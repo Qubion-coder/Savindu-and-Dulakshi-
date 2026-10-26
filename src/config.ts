@@ -21,7 +21,9 @@ export const WEDDING = {
 };
 
 // Google Apps Script Web App URL (see google-apps-script/SETUP.md)
-export const GOOGLE_SCRIPT_URL: string = import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL || '';
+export const GOOGLE_SCRIPT_URL: string =
+  import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL ||
+  'https://script.google.com/macros/s/AKfycbzFTBq5TKXptFQvu5eWbfJoiwoXGu3SGaEOmTqT8RuOEX4unHi_nu8JvK9nL-r8ojBx_A/exec';
 
 export type SheetName = 'RSVP' | 'Wishes';
 
