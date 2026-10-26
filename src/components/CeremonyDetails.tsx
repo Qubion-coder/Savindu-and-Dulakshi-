@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Clock, Calendar, MapPin, Heart, Sparkles } from 'lucide-react';
+import { WEDDING } from '../config';
 
 export const CeremonyDetails: React.FC = () => {
   return (
@@ -29,8 +30,8 @@ export const CeremonyDetails: React.FC = () => {
               <span className="italic font-light text-brand-mocha">Tradition & Love</span>
             </h2>
             
-            <p className="text-brand-sand/90 font-serif text-lg sm:text-xl leading-relaxed mb-16 max-w-lg">
-              We are honored to invite you to witness our union as we exchange vows at St. Mary's Cathedral, surrounded by the grace of God and the warmth of our loved ones.
+            <p className="text-brand-sand/90 font-serif text-lg sm:text-xl leading-relaxed mb-8 max-w-lg">
+              We are honored to invite you to witness our union at {WEDDING.venue}, {WEDDING.city}, surrounded by the blessings and warmth of our loved ones.
             </p>
 
             {/* Premium Timeline */}
@@ -42,8 +43,8 @@ export const CeremonyDetails: React.FC = () => {
                   <Calendar className="w-5 h-5 text-brand-mocha group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-brand-mocha mb-2 group-hover:text-brand-mocha transition-colors duration-500">Monday, March 22</h4>
-                  <p className="text-brand-sand/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">The Year Two Thousand Twenty Seven</p>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-brand-mocha mb-2 group-hover:text-brand-mocha transition-colors duration-500">{WEDDING.dayLabel}</h4>
+                  <p className="text-brand-sand/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">{WEDDING.yearInWords}</p>
                 </div>
               </div>
 
@@ -53,8 +54,8 @@ export const CeremonyDetails: React.FC = () => {
                   <Clock className="w-5 h-5 text-brand-mocha group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-brand-mocha mb-2 group-hover:text-brand-mocha transition-colors duration-500">03:30 PM</h4>
-                  <p className="text-brand-sand/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Wedding Ceremony — St. Mary's Cathedral, Colombo</p>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-brand-mocha mb-2 group-hover:text-brand-mocha transition-colors duration-500">{WEDDING.timeRange}</h4>
+                  <p className="text-brand-sand/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Wedding Celebration — {WEDDING.venue}, {WEDDING.city}</p>
                 </div>
               </div>
 
@@ -64,8 +65,8 @@ export const CeremonyDetails: React.FC = () => {
                   <MapPin className="w-5 h-5 text-brand-mocha group-hover:scale-110 transition-transform duration-500" />
                 </div>
                 <div>
-                  <h4 className="font-serif text-2xl sm:text-3xl text-brand-mocha mb-2 group-hover:text-brand-mocha transition-colors duration-500">ITC Rathnadeepa</h4>
-                  <p className="text-brand-sand/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">Colombo</p>
+                  <h4 className="font-serif text-2xl sm:text-3xl text-brand-mocha mb-2 group-hover:text-brand-mocha transition-colors duration-500">{WEDDING.venue}</h4>
+                  <p className="text-brand-sand/80 text-[10px] sm:text-[11px] uppercase tracking-[0.3em] font-bold">{WEDDING.city}</p>
                 </div>
               </div>
             </div>
@@ -119,13 +120,13 @@ export const CeremonyDetails: React.FC = () => {
                 <Sparkles className="w-4 h-4 text-brand-gold animate-pulse flex-shrink-0" />
               </div>
               <div className="flex-1">
-                <h4 className="font-display text-2xl sm:text-4xl text-brand-mocha mb-1 sm:mb-2 tracking-tight">The Reception</h4>
+                <h4 className="font-display text-2xl sm:text-4xl text-brand-mocha mb-1 sm:mb-2 tracking-tight">The Celebration</h4>
                 <p className="text-brand-sand/90 font-serif text-sm sm:text-base leading-relaxed">
-                  Followed by a grand celebratory dinner and evening festivities at ITC Rathnadeepa.
+                  Join us for the Poruwa ceremony, followed by a celebratory lunch and festivities at {WEDDING.venue}.
                 </p>
               </div>
               <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-brand-champagne rounded-full border border-brand-gold/30 shadow-sm self-start sm:self-center flex-shrink-0">
-                <span className="text-brand-mocha font-sans font-bold tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-[11px] uppercase block drop-shadow-sm">7:00 PM Onwards</span>
+                <span className="text-brand-mocha font-sans font-bold tracking-[0.1em] sm:tracking-[0.2em] text-[9px] sm:text-[11px] uppercase block drop-shadow-sm">8:30 AM – 3:30 PM</span>
               </div>
             </div>
           </motion.div>

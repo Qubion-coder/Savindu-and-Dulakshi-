@@ -1,50 +1,31 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'motion/react';
-import { Send, Loader2, Sparkles } from 'lucide-react';
+import { motion } from 'motion/react';
+import { Send, Loader2, Sparkles, Heart } from 'lucide-react';
+import { toast } from 'sonner';
+import { submitToSheet } from '../config';
 
-interface Wish {
-  id: string;
-  name: string;
-  message: string;
-  createdAt: Date;
-}
-
-const getRelativeTime = (date: Date) => {
-  const diff = Date.now() - date.getTime();
-  const minutes = Math.floor(diff / 60000);
-  if (minutes < 1) return 'just now';
-  if (minutes < 60) return `${minutes}m ago`;
-  const hours = Math.floor(minutes / 60);
-  if (hours < 24) return `${hours}h ago`;
-  return `${Math.floor(hours / 24)}d ago`;
-};
-
-export const WishesSection: React.FC = () => {
-  const [wishes, setWishes] = useState<Wish[]>([]);
-  const [formData, setFormData] = useState({ name: '', message: '' });
+export const WishesSection: React.FC<{ guestName?: string }> = ({ guestName = '' }) => {
+  const [formData, setFormData] = useState({ name: guestName, message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.message) return;
+    if (!formData.name.trim() || !formData.message.trim()) return;
     setIsSubmitting(true);
 
     try {
-      // Simulate network request latency
-      await new Promise(resolve => setTimeout(resolve, 800));
+      await submitToSheet('Wishes', {
+        invitedAs: guestName,
+        name: formData.name.trim(),
+        message: formData.message.trim(),
+      });
 
-      const newWish: Wish = {
-        id: Date.now().toString(),
-        name: formData.name,
-        message: formData.message,
-        createdAt: new Date(),
-      };
-      
-      // Prepend the new wish to the list
-      setWishes(prev => [newWish, ...prev]);
-      setFormData({ name: '', message: '' });
+      // Wishes are private to the couple, so nothing is shown on the page
+      toast.success('Thank you! Your blessing has been sent to the couple.');
+      setFormData({ name: guestName, message: '' });
     } catch (error) {
       console.error('Error submitting wish: ', error);
+      toast.error('Sorry, we could not send your wish. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -74,7 +55,7 @@ export const WishesSection: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 1, ease: 'easeOut' }}
-          className="w-full glass p-8 sm:p-14 rounded-[3rem] border border-white/60 shadow-[0_30px_60px_rgba(197,160,89,0.1)] relative overflow-hidden bg-white/70 backdrop-blur-3xl mb-16"
+          className="w-full glass p-8 sm:p-14 rounded-[3rem] border border-white/60 shadow-[0_30px_60px_rgba(197,160,89,0.1)] relative overflow-hidden bg-white/70 backdrop-blur-3xl mb-10"
         >
           {/* Subtle top reflection line */}
           <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-brand-gold to-transparent opacity-50" />
@@ -130,31 +111,10 @@ export const WishesSection: React.FC = () => {
           </form>
         </motion.div>
 
-        {/* Wishes List - Stacked Centrally Below */}
-        <div className="w-full space-y-6 max-h-[800px] overflow-y-auto pr-4 scrollbar-thin">
-          <AnimatePresence initial={false}>
-            {wishes.map((wish) => (
-              <motion.div
-                key={wish.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="glass p-8 sm:p-10 rounded-3xl border border-brand-gold/20 shadow-sm relative overflow-hidden group bg-white/50 backdrop-blur-sm"
-              >
-                <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-brand-mocha/20 to-brand-gold/40 group-hover:from-brand-mocha group-hover:to-brand-gold transition-all duration-500" />
-                <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 sm:gap-4 mb-4">
-                  <h4 className="font-display text-2xl text-brand-mocha tracking-tight pl-2">{wish.name}</h4>
-                  <span className="text-[9px] uppercase tracking-[0.2em] text-brand-sand font-bold bg-white/60 px-3 py-1 rounded-full border border-stone-100/50">
-                    {wish.createdAt ? getRelativeTime(wish.createdAt) : 'just now'}
-                  </span>
-                </div>
-                <p className="text-brand-sand font-serif italic text-lg sm:text-lg leading-relaxed pl-2">
-                  "{wish.message}"
-                </p>
-              </motion.div>
-            ))}
-          </AnimatePresence>
-        </div>
+        <p className="flex items-center gap-2 text-brand-sand font-serif italic text-base">
+          <Heart className="w-4 h-4 text-brand-gold fill-brand-gold/20" />
+          Your wishes are shared privately with Shavindu & Dulakshi.
+        </p>
       </div>
     </div>
   );

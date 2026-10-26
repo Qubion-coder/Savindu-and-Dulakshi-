@@ -1,11 +1,10 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { MapPin, Navigation, Compass, Map } from 'lucide-react';
+import { MapPin, Navigation, Compass } from 'lucide-react';
+import { WEDDING } from '../config';
 
 export const Location: React.FC = () => {
-  const venueAddress = "ITC Rathnadeepa, Colombo";
-  const mapUrl = `https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15822.464624388344!2d80.0328!3d7.2289!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNyAxMyczMy4wIk4gODDCsDAxJzU4LjEiRQ!5e0!3m2!1sen!2slk!4v1711000000000!5m2!1sen!2slk`;
-  const liveLocationUrl = "https://www.google.com/maps/search/ITC+Rathnadeepa+Colombo";
+  const liveLocationUrl = WEDDING.mapUrl;
 
   return (
     <div className="max-w-[85rem] mx-auto px-6 relative py-12">
@@ -46,8 +45,8 @@ export const Location: React.FC = () => {
                   <MapPin className="text-brand-mocha w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-3xl font-serif text-brand-mocha mb-2">ITC Rathnadeepa</p>
-                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-brand-sand leading-relaxed mb-6">Colombo</p>
+                  <p className="text-3xl font-serif text-brand-mocha mb-2">{WEDDING.venue}</p>
+                  <p className="text-xs uppercase tracking-[0.2em] font-medium text-brand-sand leading-relaxed mb-6">{WEDDING.city}</p>
                   
                   <p className="text-brand-sand/90 italic font-serif text-lg leading-relaxed max-w-sm mx-auto mb-10">
                     "A serene and elegant setting where we will begin our new chapter together."

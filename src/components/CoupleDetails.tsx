@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'motion/react';
 import { Sparkles, Heart } from 'lucide-react';
+import { WEDDING } from '../config';
 
 export const CoupleDetails: React.FC = () => {
   return (
@@ -21,7 +22,7 @@ export const CoupleDetails: React.FC = () => {
             <div className="w-12 sm:w-20 h-[1px] bg-gradient-to-l from-transparent to-brand-mocha/60" />
           </div>
           <h2 className="text-5xl sm:text-7xl font-display text-brand-mocha tracking-tight drop-shadow-sm">
-            Eleanor <span className="italic text-brand-mocha font-light mx-2">&</span> Alexander
+            {WEDDING.groom.name} <span className="italic text-brand-mocha font-light mx-2">&</span> {WEDDING.bride.name}
           </h2>
         </motion.div>
       </div>
@@ -37,8 +38,8 @@ export const CoupleDetails: React.FC = () => {
         >
           <div className="mb-4 flex flex-col items-center lg:items-end">
             <span className="text-brand-mocha uppercase tracking-[0.4em] text-[10px] font-bold mb-3 block">The Groom</span>
-            <h3 className="text-4xl sm:text-5xl font-display text-brand-mocha mb-2 drop-shadow-sm">Alexander</h3>
-            <p className="text-brand-sand/90 font-serif italic text-base sm:text-lg">Son of Mr. Robert Sterling<br />& Mrs. Margaret Sterling</p>
+            <h3 className="text-4xl sm:text-5xl font-display text-brand-mocha mb-2 drop-shadow-sm">{WEDDING.groom.name}</h3>
+            <p className="text-brand-sand/90 font-serif italic text-base sm:text-lg">Son of {WEDDING.groom.father}<br />& {WEDDING.groom.mother}</p>
           </div>
           <div className="hidden lg:flex justify-end mt-8">
             <Heart className="w-6 h-6 text-brand-gold/60 fill-brand-gold/20 transform hover:scale-110 transition-transform cursor-pointer" />
@@ -58,12 +59,12 @@ export const CoupleDetails: React.FC = () => {
 
           <div className="relative w-[300px] h-[400px] sm:w-[360px] sm:h-[500px] lg:w-[420px] lg:h-[580px] rounded-[12rem_12rem_16px_16px] overflow-hidden border-[6px] border-white/90 shadow-[0_20px_50px_rgba(197,160,89,0.2)] bg-brand-champagne mx-auto z-10 transition-transform duration-700 group-hover:-translate-y-2">
             <img
-              src="/images/b.jpg"
+              src="/x.jpeg"
               onError={(e) => {
                 e.currentTarget.src = "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?auto=format&fit=crop&q=80&w=800&h=1000";
                 e.currentTarget.onerror = null;
               }}
-              alt="Samadhi and Madhawa"
+              alt={`${WEDDING.groom.name} and ${WEDDING.bride.name}`}
               className="w-full h-full object-cover scale-[1.2] lg:scale-[1.15] object-[center_30%] transition-transform duration-[1.5s] ease-out group-hover:scale-[1.25] lg:group-hover:scale-[1.2]"
             />
             {/* Elegant inner shadow & overlay */}
@@ -91,8 +92,8 @@ export const CoupleDetails: React.FC = () => {
         >
           <div className="mb-4 flex flex-col items-center lg:items-start">
             <span className="text-brand-mocha uppercase tracking-[0.4em] text-[10px] font-bold mb-3 block">The Bride</span>
-            <h3 className="text-4xl sm:text-5xl font-display text-brand-mocha mb-2 drop-shadow-sm">Eleanor</h3>
-            <p className="text-brand-sand/90 font-serif italic text-base sm:text-lg">Daughter of Mr. Charles Kensington<br />& Mrs. Victoria Kensington</p>
+            <h3 className="text-4xl sm:text-5xl font-display text-brand-mocha mb-2 drop-shadow-sm">{WEDDING.bride.name}</h3>
+            <p className="text-brand-sand/90 font-serif italic text-base sm:text-lg">Daughter of {WEDDING.bride.father}<br />& {WEDDING.bride.mother}</p>
           </div>
           <div className="hidden lg:flex justify-start mt-8">
             <Heart className="w-6 h-6 text-brand-gold/60 fill-brand-gold/20 transform hover:scale-110 transition-transform cursor-pointer" />

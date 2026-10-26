@@ -27,6 +27,8 @@ export function EnvelopeOpening({ onComplete, onMusicStart }: { onComplete: () =
         className="absolute w-full h-full object-cover transition-opacity duration-1000"
         style={{ opacity: isPlaying ? 1 : 0.3 }}
         playsInline
+        preload="auto"
+        muted
         onEnded={handleVideoEnd}
       />
       
