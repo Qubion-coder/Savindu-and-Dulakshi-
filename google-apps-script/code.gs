@@ -1,5 +1,5 @@
 /**
- * Shavindu & Dulakshi — Wedding Invitation backend
+ * Shavindu & Vichalya — Wedding Invitation backend
  * Stores RSVPs and Wishes in separate sheets. Sheets and headers are
  * created automatically on the first submission (or by running setup()).
  */

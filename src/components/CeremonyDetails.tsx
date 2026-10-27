@@ -122,7 +122,7 @@ export const CeremonyDetails: React.FC = () => {
               <div className="flex-1">
                 <h4 className="font-display text-2xl sm:text-4xl text-brand-mocha mb-1 sm:mb-2 tracking-tight">The Celebration</h4>
                 <p className="text-brand-sand/90 font-serif text-sm sm:text-base leading-relaxed">
-                  Join us for the Poruwa ceremony, followed by a celebratory lunch and festivities at {WEDDING.venue}.
+                  Join us for the wedding ceremony, followed by a celebratory lunch and festivities at {WEDDING.venue}.
                 </p>
               </div>
               <div className="inline-block px-4 sm:px-6 py-2 sm:py-3 bg-brand-champagne rounded-full border border-brand-gold/30 shadow-sm self-start sm:self-center flex-shrink-0">

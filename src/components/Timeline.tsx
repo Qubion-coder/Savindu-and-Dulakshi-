@@ -1,10 +1,9 @@
 import React from 'react';
 import { motion } from 'motion/react';
-import { Heart, Music, Camera, Utensils, Sparkles } from 'lucide-react';
+import { Heart, Camera, Utensils, Sparkles } from 'lucide-react';
 
 const events = [
   { time: '08:30 AM', title: 'Guest Arrival', icon: Heart, desc: 'Welcoming our loved ones to Earls Regency, Kandy' },
-  { time: '09:30 AM', title: 'Poruwa Ceremony', icon: Music, desc: 'The traditional union blessed by our families' },
   { time: '11:30 AM', title: 'Photographs & Celebrations', icon: Camera, desc: 'Sweet moments with family and friends' },
   { time: '12:30 PM', title: 'Wedding Lunch', icon: Utensils, desc: 'A grand celebratory feast' },
   { time: '03:30 PM', title: 'Farewell', icon: Sparkles, desc: 'Bidding farewell with gratitude and love' },

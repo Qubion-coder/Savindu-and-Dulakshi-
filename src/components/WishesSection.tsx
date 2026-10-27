@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Send, Loader2, Sparkles, Heart } from 'lucide-react';
 import { toast } from 'sonner';
-import { submitToSheet } from '../config';
+import { WEDDING, submitToSheet } from '../config';
 
 export const WishesSection: React.FC<{ guestName?: string }> = ({ guestName = '' }) => {
   const [formData, setFormData] = useState({ name: guestName, message: '' });
@@ -113,7 +113,7 @@ export const WishesSection: React.FC<{ guestName?: string }> = ({ guestName = ''
 
         <p className="flex items-center gap-2 text-brand-sand font-serif italic text-base">
           <Heart className="w-4 h-4 text-brand-gold fill-brand-gold/20" />
-          Your wishes are shared privately with Shavindu & Dulakshi.
+          Your wishes are shared privately with {WEDDING.groom.name} & {WEDDING.bride.name}.
         </p>
       </div>
     </div>

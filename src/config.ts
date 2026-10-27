@@ -5,7 +5,7 @@ export const WEDDING = {
     mother: 'Mrs. Wathsala Hettiarachchi',
   },
   bride: {
-    name: 'Dulakshi',
+    name: 'Vichalya',
     father: 'Mr. Sisira Herath',
     mother: 'Mrs. Shirani Kumudukumari',
   },
